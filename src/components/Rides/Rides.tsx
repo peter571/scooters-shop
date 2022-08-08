@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ScootersContext } from "../../context/ScootersContext";
 import Bikes from "../Bikes/Bikes";
 import Scooters from "../Scooters/Scooters";
 
@@ -27,7 +28,7 @@ export default function Rides() {
           Bikes
         </h1>
       </div>
-      <div className="w-[80%]">
+      <div className="w-full">
         {currentId === "scooters" ? <Scooters /> : <Bikes />}
       </div>
     </div>

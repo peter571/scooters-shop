@@ -20,7 +20,7 @@ function CarouselImages(props: CouraselImagesProp) {
   };
 
   return (
-    <div className="h-[80%] w-[50%]">
+    <div className="h-screen w-[50%]">
       <Slider {...settings}>
        {props.images.map((item, index) => <CarouselCard key={index} image={item} />)}
       </Slider>
