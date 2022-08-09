@@ -1,4 +1,3 @@
-import { Field } from "formik";
 import React from "react";
 
 interface SelectProp {
@@ -11,11 +10,12 @@ interface SelectProp {
 
 export default function Select(props: SelectProp) {
   return (
-    <div>
+    <div className="my-1 flex flex-col">
       <label htmlFor={props.name}>{props.label}</label>
-      <select onChange={props.handleChange} id={props.name} name={props.name}>
-        {props?.options.map((item, index) => {
-            return <option key={index} value={item}>{item}</option>
+      <select className="px-2 py-1" onChange={props.handleChange} id={props.name} name={props.name}>
+        <option value=""></option>
+        {props?.options?.map((item) => {
+            return <option key={item.id} value={item.id}>{item.label}</option>
         })}
       </select>
     </div>
