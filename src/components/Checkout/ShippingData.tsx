@@ -16,11 +16,14 @@ export default function ShippingData() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="w-[50%] p-8 flex flex-col justify-center items-center">
-      <h1 className="text-center">Purchase Scooter</h1>
+    <div className=" sm:shadow-md md:w-[80%] lg:w-[50%] p-8 flex flex-col justify-center items-center">
+      <h1 className="text-center font-bold">Enter Shipping Details</h1>
       <form
-        onSubmit={handleSubmit}
-        className="flex flex-col w-full justify-center"
+        onSubmit={(e) => {
+          handleSubmit(e);
+          nextStep();
+        }}
+        className="grid grid-cols-2 gap-4 w-full justify-center"
       >
         <Input
           label={"First Name*"}
@@ -28,6 +31,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.firstName}
+          placeholder={"First name"}
         />
         <Input
           label={"Last Name*"}
@@ -35,6 +39,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.lastName}
+          placeholder={"Last name"}
         />
         <Input
           label={"Email*"}
@@ -42,6 +47,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.email}
+          placeholder={"email"}
         />
         <Input
           label={"City*"}
@@ -49,6 +55,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.city}
+          placeholder={"city"}
         />
 
         <Input
@@ -57,6 +64,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.zip}
+          placeholder={"zip"}
         />
 
         <Input
@@ -65,6 +73,7 @@ export default function ShippingData() {
           handleChange={handleChange}
           type={"text"}
           value={shippingData.address}
+          placeholder={"address"}
         />
 
         <Select
@@ -89,8 +98,8 @@ export default function ShippingData() {
         />
         <button
           className="px-2 py-1 bg-blue-600 rounded-md my-1 text-white"
-          onClick={nextStep}
           disabled={isActive}
+          type="submit"
         >
           Next
         </button>

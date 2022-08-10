@@ -9,25 +9,23 @@ interface InputProp {
   type: TYPE;
   value: any;
   maxLength?: number;
+  placeholder: string;
 }
 
 export default function Input(props: InputProp) {
   return (
-    <div className="flex flex-col my-1">
-      <label htmlFor={props.name}>{props.label}</label>
+    <div className="flex flex-col gap-1 my-1">
+      <label className="text-sm" htmlFor={props.name}>{props.label}</label>
       <input
-        className={styles.input}
+        className="rounded-sm outline-none px-1 focus:ring-1 focus:ring-black"
+        placeholder={props.placeholder}
         type={props.type}
         onChange={props.handleChange}
         value={props.value}
         name={props.name}
         maxLength={props.maxLength}
+        required={true}
       />
     </div>
   );
 }
-
-const styles = {
-  input:
-    "rounded-md border-2 border-grey hover:border-black focus:ring-blue-500 focus:border-blue-500 focus:border-black px-1 py-1",
-};

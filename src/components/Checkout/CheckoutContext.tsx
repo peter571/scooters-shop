@@ -36,7 +36,6 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProp) => {
     shippingCountry: "",
     shippingSubdivision: "",
   };
-
   const [shippingData, setShippingData] =
     useState<ShippingDataValues>(initialshippingData);
   const [shippingCountries, setShippingCountries] = useState<any>([]);
@@ -89,7 +88,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProp) => {
           },
         },
       };
-      handleCaptureCheckout(checkoutToken.id, orderData);
+      await handleCaptureCheckout(checkoutToken.id, orderData);
     }
   };
 

@@ -4,7 +4,7 @@ import RideCard from "../RideCard/RideCard";
 
 export default function Scooters() {
   const { products } = useContext(ScootersContext);
-  
+
   return (
     <div className="p-5 flex flex-wrap gap-8 h-screen overflow-y-scroll">
       {products.map((item) => {

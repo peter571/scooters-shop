@@ -3,12 +3,11 @@ import Card from "./Card";
 import CarouselImages from "./CarouselImages";
 import pic1 from "../../scooters/vespa-no-bg.png";
 import pic2 from "../../scooters/vespa1-no-bg.png";
-import pic3 from "../../scooters/vespa2-no-bg.png";
 
 export default function Home() {
   return (
     <div className={styles.homeWrapper}>
-      <CarouselImages images={[pic1, pic2, pic3]} />
+      <CarouselImages images={[pic1, pic2]} />
       <Card />
     </div>
   );

@@ -8,6 +8,7 @@ import HomeScreen from "./pages/Home";
 import RidesScreen from "./pages/Rides";
 import CheckoutScreen from './pages/Checkout'
 import Nav from "./components/Nav/Nav";
+import Success from "./pages/Success";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path='/' element={<HomeScreen />} />
       <Route path='/rides' element={<RidesScreen />} />
       <Route path='/checkout' element={<CheckoutScreen />} />
+      <Route path='/success' element={<Success />} />
     </Routes>
     </>
   );

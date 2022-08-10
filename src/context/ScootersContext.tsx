@@ -1,4 +1,3 @@
-import { Cart } from "@chec/commerce.js/types/cart";
 import { CheckoutCapture } from "@chec/commerce.js/types/checkout-capture";
 import { CheckoutCaptureResponse } from "@chec/commerce.js/types/checkout-capture-response";
 import { CheckoutToken } from "@chec/commerce.js/types/checkout-token";
@@ -12,7 +11,6 @@ interface GlobalContent {
     newOrder: CheckoutCapture
   ) => Promise<void>;
   purchase: (id: string) => Promise<void>;
-  cart: Cart;
   order: CheckoutCaptureResponse;
   checkoutToken: CheckoutToken;
 }
@@ -27,23 +25,22 @@ export const ScootersContext = React.createContext<GlobalContent>(
 
 export const ScootersProvider = ({ children }: ProviderProps) => {
   const [products, setProducts] = useState<any[]>([]);
-  const [cart, setCart] = useState<Cart>({} as Cart);
   const [order, setOrder] = useState<CheckoutCaptureResponse>(
     {} as CheckoutCaptureResponse
   );
   const [errorMsg, setErrorMessage] = useState("");
-  const [checkoutToken, setCheckoutToken] = useState<CheckoutToken>({} as CheckoutToken);
-
-  async function refreshCart() {
-    const item = await commerce.cart.refresh();
-    setCart(item);
-  }
+  const [checkoutToken, setCheckoutToken] = useState<CheckoutToken>(
+    {} as CheckoutToken
+  );
 
   async function purchase(id: string) {
-    await commerce.cart.add(id, 1);
-    await refreshCart();
-    const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
-    setCheckoutToken(token);
+    try {
+      const token = await commerce.checkout.generateTokenFrom("product_id", id);
+      setCheckoutToken(token);
+      console.log("Checkout Token: ", token);
+    } catch (error) {
+      console.log("Failed to genarate token! :", error);
+    }
   }
 
   async function handleCaptureCheckout(
@@ -57,9 +54,9 @@ export const ScootersProvider = ({ children }: ProviderProps) => {
       );
 
       setOrder(incomingOrder);
-      await refreshCart();
     } catch (error) {
-      setErrorMessage("An error occured!");
+      setErrorMessage("An error occured on Capture!");
+      console.log("An error occured on Capture!", error);
     }
   }
 
@@ -73,7 +70,13 @@ export const ScootersProvider = ({ children }: ProviderProps) => {
 
   return (
     <ScootersContext.Provider
-      value={{ products, handleCaptureCheckout, purchase, cart, order, checkoutToken }}
+      value={{
+        products,
+        handleCaptureCheckout,
+        purchase,
+        order,
+        checkoutToken,
+      }}
     >
       {children}
     </ScootersContext.Provider>
