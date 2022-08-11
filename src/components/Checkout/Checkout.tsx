@@ -1,7 +1,7 @@
 import React from "react";
 import PaymentForm from "./PaymentForm";
 import ShippingData from "./ShippingData";
-import { Wizard, useWizard } from "react-use-wizard";
+import { Wizard } from "react-use-wizard";
 import { CheckoutProvider } from "./CheckoutContext";
 
 export default function Checkout() {
