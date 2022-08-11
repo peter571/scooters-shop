@@ -40,11 +40,9 @@ export default function PaymentForm() {
               onSubmit={async (e) => {
                 try {
                   setLoading(true);
-                  await handlePaymentSubmit(e, elements, stripe);
-                  console.log(order);
-                  if (order) {
-                    navigate("/success");
-                  }
+                  await handlePaymentSubmit(e, elements, stripe).then((res) => {
+                    navigate("/success")
+                  });    
                   setLoading(false);
                 } catch (error) {
                   console.log(error);
