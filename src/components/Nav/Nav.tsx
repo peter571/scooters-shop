@@ -6,7 +6,7 @@ export default function Nav() {
   const navigate = useNavigate();
 
   return (
-    <nav className="flex flex-row justify-between items-center py-4 px-4 align-middle bg-gray-500 shadow-md">
+    <nav className="flex flex-row justify-between bg-transparent items-center px-2 md:px-4 py-4 align-middle">
       <div
         className="flex flex-row gap-1 items-center align-middle cursor-pointer"
         onClick={() => navigate("/")}

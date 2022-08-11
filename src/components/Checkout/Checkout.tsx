@@ -7,7 +7,7 @@ import { CheckoutProvider } from "./CheckoutContext";
 export default function Checkout() {
   return (
     <CheckoutProvider>
-      <div className="flex flex-row justify-center align-middle bg-gray-400 items-center min-h-screen">
+      <div className="flex flex-row justify-center align-middle items-center min-h-screen">
         <Wizard>
           <ShippingData />
           <PaymentForm />

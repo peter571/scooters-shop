@@ -11,16 +11,17 @@ interface CouraselImagesProp {
 function CarouselImages(props: CouraselImagesProp) {
   const settings = {
     infinite: true,
-    dots: true,
+    dots: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2000,
+    arrows: false
   };
 
   return (
-    <div className="h-screen w-[50%]">
+    <div className="w-full sm:w-[50%]">
       <Slider {...settings}>
        {props.images.map((item, index) => <CarouselCard key={index} image={item} />)}
       </Slider>

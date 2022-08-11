@@ -9,10 +9,11 @@ export default function Home() {
     <div className={styles.homeWrapper}>
       <CarouselImages images={[pic1, pic2]} />
       <Card />
+      <h1 className="absolute font-extrabold text-2xl top-1">Scooters and Bikes</h1>
     </div>
   );
 }
 
 const styles = {
-  homeWrapper: "flex h-screen justify-evenly align-middle items-center",
+  homeWrapper: "relative flex flex-col sm:flex-row min-h-screen justify-evenly align-middle items-center bg-gradient-to-r from-[#DEDEDE] to-pink-500",
 };

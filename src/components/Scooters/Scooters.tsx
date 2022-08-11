@@ -6,7 +6,7 @@ export default function Scooters() {
   const { products } = useContext(ScootersContext);
 
   return (
-    <div className="p-5 flex flex-wrap gap-8 h-screen overflow-y-scroll">
+    <div className="p-5 flex items-center sm:items-start align-middle justify-center sm:justify-start flex-wrap gap-8 h-screen overflow-y-scroll">
       {products.map((item) => {
         if (Number(item.attributes[0].value) === 0) {
           return (

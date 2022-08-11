@@ -12,8 +12,8 @@ export default function Complete() {
       <div className="flex flex-col justify-items-center items-center align-middle mt-[10%] w-[90%] sm:w-[70%] md:w-[50%] lg:w-[40%] bg-green-200 p-3">
         <div className="">
           <h4 className="font-bold">
-            Thank you for your purchase, {order.customer.firstname}{" "}
-            {order.customer.lastname}!
+            Thank you for your purchase, {order?.customer.firstname}{" "}
+            {order?.customer.lastname}!
           </h4>
           <p className="font-bold">
             <span>Order ref: {order?.customer_reference}</span>

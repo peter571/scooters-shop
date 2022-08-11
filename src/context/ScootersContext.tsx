@@ -11,7 +11,7 @@ interface GlobalContent {
     newOrder: CheckoutCapture
   ) => Promise<void>;
   purchase: (id: string) => Promise<void>;
-  order: CheckoutCaptureResponse;
+  order: CheckoutCaptureResponse | null;
   checkoutToken: CheckoutToken;
 }
 
@@ -25,9 +25,7 @@ export const ScootersContext = React.createContext<GlobalContent>(
 
 export const ScootersProvider = ({ children }: ProviderProps) => {
   const [products, setProducts] = useState<any[]>([]);
-  const [order, setOrder] = useState<CheckoutCaptureResponse>(
-    {} as CheckoutCaptureResponse
-  );
+  const [order, setOrder] = useState<CheckoutCaptureResponse | null>(null);
   const [errorMsg, setErrorMessage] = useState("");
   const [checkoutToken, setCheckoutToken] = useState<CheckoutToken>(
     {} as CheckoutToken

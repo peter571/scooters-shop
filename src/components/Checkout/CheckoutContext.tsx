@@ -67,7 +67,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProp) => {
       console.log("[error]", error);
     } else {
       const orderData = {
-        line_items: checkoutToken.live.line_items,
+        line_items: checkoutToken?.live.line_items,
         customer: {
           firstname: shippingData.firstName,
           lastname: shippingData.lastName,
